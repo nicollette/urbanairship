@@ -75,6 +75,10 @@ module Urbanairship
       do_request(:get, "/api/device_tokens/feedback/?since=#{format_time(time)}", :authenticate_with => :master_secret)
     end
 
+    def apid_feedback(time)
+      do_request(:get, "/api/apids/feedback/?since=#{format_time(time)}", :authenticate_with => :master_secret)
+    end
+
     def tags
       do_request(:get, "/api/tags/", :authenticate_with => :master_secret)
     end
