@@ -344,6 +344,30 @@ response.code # => '503'
 response.inspect # => "{\"error\"=>\"Request timeout\"}"
 ```
 
+Polling the Device Informations API for Feedback
+------------------------------------------------
+Google informs Urban Airship when a push notification is sent to a device that can’t receive it because the application has been uninstalled. Urban Airship marks the APID as inactive and immediately stop sending notifications to that device.
+
+
+```ruby
+# find all apids deactivated in the past 24 hours
+Urbanairship.apid_feedback(24.hours.ago) # =>
+#[
+#   {
+#      "apid": "00000000-0000-0000-0000-000000000000",
+#      "gcm_registration_id": null,
+#      "marked_inactive_on": "2009-06-22 10:05:00",
+#      "alias": "bob"
+#   },
+#   {
+#      "apid": "00000000-0000-0000-0000-000000000001",
+#      "gcm_registration_id": null,
+#      "marked_inactive_on": "2009-06-22 10:07:00",
+#      "alias": null
+#   }
+#]
+```
+
 Instantiating an Urbanairship::Client
 -------------------------------------
 
